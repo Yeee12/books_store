@@ -1,0 +1,10 @@
+# Node
+node_modules/
+.env
+
+# OS junk
+$Recycle.Bin/
+System Volume Information/
+Thumbs.db
+.DS_Store
+
