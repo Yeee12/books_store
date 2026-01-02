@@ -11,7 +11,22 @@
     "test:integration": "jest --testPathPattern=integration",
     "lint": "eslint ."
   },
-  "keywords": ["bookstore", "api", "nodejs", "mongodb", "jwt"],
+  "keywords": [
+    "bookstore",
+    "api",
+    "nodejs",
+    "mongodb",
+    "jwt"
+  ],
   "author": "Aina Michael",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.1.1",
+    "multer": "^2.0.2"
+  }
 }
