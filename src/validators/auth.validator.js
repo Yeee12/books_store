@@ -49,6 +49,7 @@ const forgotPasswordValidation = [
 
 /**
  * Validation rules for password reset
+ * CHANGED: confirmPassword → passwordConfirm
  */
 const resetPasswordValidation = [
   body('password')
@@ -57,7 +58,7 @@ const resetPasswordValidation = [
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/)
     .withMessage('Password must contain at least one uppercase letter, one lowercase letter, and one number'),
   
-  body('confirmPassword')
+  body('passwordConfirm') // ✅ Changed from confirmPassword
     .notEmpty().withMessage('Please confirm your password')
     .custom((value, { req }) => value === req.body.password)
     .withMessage('Passwords do not match')
@@ -65,6 +66,7 @@ const resetPasswordValidation = [
 
 /**
  * Validation rules for password change
+ * CHANGED: confirmPassword → passwordConfirm
  */
 const changePasswordValidation = [
   body('currentPassword')
@@ -78,7 +80,7 @@ const changePasswordValidation = [
     .custom((value, { req }) => value !== req.body.currentPassword)
     .withMessage('New password must be different from current password'),
   
-  body('confirmPassword')
+  body('passwordConfirm') // ✅ Changed from confirmPassword
     .notEmpty().withMessage('Please confirm your password')
     .custom((value, { req }) => value === req.body.newPassword)
     .withMessage('Passwords do not match')

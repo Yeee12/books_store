@@ -1,3 +1,9 @@
+// ============================================================================
+// FILE: server.js (Root directory)
+// LOCATION: Replace your server.js in the root folder
+// PURPOSE: Entry point for the application
+// ============================================================================
+
 const app = require('./src/app');
 const connectDB = require('./src/config/database');
 const { initializeSocket } = require('./src/config/socket');

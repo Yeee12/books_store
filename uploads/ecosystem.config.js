@@ -1,6 +1,6 @@
 module.exports = {
   apps: [{
-    name: 'bookstore-api',
+    name: 'firstapi',
     script: './server.js',
     instances: 'max',
     exec_mode: 'cluster',

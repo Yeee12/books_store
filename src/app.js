@@ -1,3 +1,9 @@
+// ============================================================================
+// FILE: src/app.js
+// LOCATION: Replace your current src/app.js with this version
+// FIX: Changed app.all('*', ...) to app.use() for 404 handler
+// ============================================================================
+
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
@@ -74,10 +80,11 @@ app.get('/health', (req, res) => {
 app.use('/api/v1', routes);
 
 // ============================================
-// 404 HANDLER - Route not found
+// 404 HANDLER - Route not found (FIXED)
+// Changed from app.all('*', ...) to app.use()
 // ============================================
 
-app.all('*', (req, res, next) => {
+app.use((req, res, next) => {
   next(new ApiError(404, `Cannot find ${req.originalUrl} on this server!`));
 });
 
@@ -88,4 +95,3 @@ app.all('*', (req, res, next) => {
 app.use(errorMiddleware);
 
 module.exports = app;
-

@@ -1,4 +1,3 @@
-
 const mongoose = require('mongoose');
 
 /**
@@ -7,17 +6,22 @@ const mongoose = require('mongoose');
  */
 const connectDB = async () => {
   try {
-    // MongoDB connection options
+    // Get MongoDB URI from environment variables
+    const mongoURI = process.env.MONGO_URI || process.env.MONGODB_URI;
+    
+    if (!mongoURI) {
+      throw new Error('MongoDB URI is not defined. Please set MONGO_URI in your .env file');
+    }
+
+    // MongoDB connection options (removed deprecated useNewUrlParser and useUnifiedTopology)
     const options = {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
       maxPoolSize: 10, // Maintain up to 10 socket connections
       serverSelectionTimeoutMS: 5000, // Keep trying to send operations for 5 seconds
       socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
     };
 
     // Connect to MongoDB
-    const conn = await mongoose.connect(process.env.MONGODB_URI, options);
+    const conn = await mongoose.connect(mongoURI, options);
 
     console.log(`✅ MongoDB Connected: ${conn.connection.host}`);
 
@@ -44,4 +48,3 @@ const connectDB = async () => {
 };
 
 module.exports = connectDB;
-
